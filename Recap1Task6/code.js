@@ -5,7 +5,7 @@ let answer = prompt('Give your score of the test:');
 while (answer < 0) {
   answer = prompt('Give your score of the test:');
 }
-const n = parseFloat(answer);
+const n = parseInt(answer);
 
 document.querySelector('#number').innerHTML += n;
 
