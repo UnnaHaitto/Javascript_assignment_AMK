@@ -3,11 +3,11 @@
 function sortArray(numbers) {
   const sortedNumbers = [];
 
-  numbers.sort((a, b) => a - b);
-
   for (let number of numbers) {
     sortedNumbers.push(number);
   }
+
+  sortedNumbers.sort((a, b) => a - b);
 
   return sortedNumbers;
 }
