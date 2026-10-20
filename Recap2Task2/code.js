@@ -3,13 +3,15 @@
 const numbers = [];
 
 for (let i = 0; i < 5; i++) {
-  let number = prompt('Give a number: ');
+  let input = prompt('Give a number: ');
+  let number = parseInt(input);
   numbers.push(number);
 }
 
 document.querySelector('#array').innerHTML = '[' + numbers + ']';
 
-let number = prompt('Give a number to be check if it is in the array: ');
+let input = prompt('Give a number to be check if it is in the array: ');
+let number = parseInt(input);
 
 if (numbers.includes(number)) {
   document.querySelector('#answer').innerHTML =
