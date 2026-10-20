@@ -12,7 +12,7 @@ for (let i = 0; i < amount; i++) {
     let number = prompt('Enter movie raiting: ');
     rating = parseInt(number);
 
-    if (0 <= rating && rating < 6) {
+    if (0 < rating && rating < 6) {
       break;
     }
   }
