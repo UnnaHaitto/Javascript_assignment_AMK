@@ -6,13 +6,19 @@ const input = prompt('Enter the amount of movies you want to rate: ');
 const amount = parseInt(input);
 
 for (let i = 0; i < amount; i++) {
-  let input2 = prompt('Enter movie name and rating separated by ,: ');
-  const data = input2.split(',');
-  let movieName = data[0];
-  let movieRating = parseInt(data[1]);
+  let name = prompt('Enter movie name: ');
+  const rating = 0;
+  while (true) {
+    let number = prompt('Enter movie raiting: ');
+    rating = parseInt(number);
+
+    if (0 < rating && rating < 6) {
+      break;
+    }
+  }
   const movie = {
-    title: movieName,
-    rating: movieRating,
+    title: name,
+    rating: rating,
   };
   movies.push(movie);
 }
