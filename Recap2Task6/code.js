@@ -7,12 +7,12 @@ const amount = parseInt(input);
 
 for (let i = 0; i < amount; i++) {
   let name = prompt('Enter movie name: ');
-  const rating = 0;
+  let rating = 0;
   while (true) {
     let number = prompt('Enter movie raiting: ');
     rating = parseInt(number);
 
-    if (0 < rating && rating < 6) {
+    if (0 <= rating && rating < 6) {
       break;
     }
   }
