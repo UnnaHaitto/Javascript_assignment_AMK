@@ -2,9 +2,9 @@
 
 function sortArray(numbers, order) {
   if (order == 'asc') {
-    numbers.sort((a, b) => a - b);
+    return numbers.sort((a, b) => a - b);
   } else if (order == 'desc') {
-    numbers.sort((a, b) => b - a);
+    return numbers.sort((a, b) => b - a);
   } else {
     console.log('sortment incorrect');
   }
@@ -17,26 +17,11 @@ const numbers3 = [4, 2, 4, 6, 8, 4, 2, 3, 4];
 const asc = 'asc';
 const desc = 'desc';
 
-sortArray(numbers, asc);
+console.log('Numbers after sort function (asc): ' + sortArray(numbers, asc));
+console.log('Numbers after sort function (desc): ' + sortArray(numbers, desc));
 
-console.log('Numbers after sort function (asc): ' + numbers);
+console.log('Numbers after sort function (asc): ' + sortArray(numbers2, asc));
+console.log('Numbers after sort function (desc): ' + sortArray(numbers2, desc));
 
-sortArray(numbers, desc);
-
-console.log('Numbers after sort function (desc): ' + numbers);
-
-sortArray(numbers2, asc);
-
-console.log('Numbers after sort function (asc): ' + numbers2);
-
-sortArray(numbers2, desc);
-
-console.log('Numbers after sort function (desc): ' + numbers2);
-
-sortArray(numbers3, asc);
-
-console.log('Numbers after sort function (asc): ' + numbers3);
-
-sortArray(numbers3, desc);
-
-console.log('Numbers after sort function (desc): ' + numbers3);
+console.log('Numbers after sort function (asc): ' + sortArray(numbers3, asc));
+console.log('Numbers after sort function (desc): ' + sortArray(numbers3, desc));
