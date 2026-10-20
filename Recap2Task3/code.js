@@ -2,11 +2,14 @@
 
 const numbers = [];
 
-let number = prompt("Enter a number (or 'done' to finish): ");
-numbers.push(number);
+while (true) {
+  let input = prompt("Enter a number (or 'done' to finish): ");
 
-while (number !== 'done') {
-  number = prompt("Enter a number (or 'done' to finish): ");
+  if (input == 'done') {
+    break;
+  }
+
+  let number = parseInt(input);
   numbers.push(number);
 }
 
