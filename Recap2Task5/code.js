@@ -1,13 +1,21 @@
 'use strict';
 
 function sortArray(numbers, order) {
+  let sortedNumbers = [];
+
+  for (let number of numbers) {
+    sortedNumbers.push(number);
+  }
+
   if (order == 'asc') {
-    return numbers.sort((a, b) => a - b);
+    return sortedNumbers.sort((a, b) => a - b);
   } else if (order == 'desc') {
-    return numbers.sort((a, b) => b - a);
+    return sortedNumbers.sort((a, b) => b - a);
   } else {
     console.log('sortment incorrect');
   }
+
+  return sortedNumbers;
 }
 
 const numbers = [2, 6, 2, 5, 8, 1, 9, 3, 6, 1, 3, 5, 2, 4, 8];
