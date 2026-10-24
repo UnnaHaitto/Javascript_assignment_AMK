@@ -771,3 +771,41 @@ const restaurants = [
 ];
 
 // your code here
+
+function success(pos) {
+  const crd = pos.coords;
+  const userLat = crd.latitude;
+  const userLong = crd.longitude;
+
+  console.log(userLat, userLong);
+
+  sortRestaurants(userLat, userLong);
+}
+
+console.log(navigator.geolocation.getCurrentPosition(success));
+
+function sortRestaurants(userLat, userLong) {
+  for (let restaurant of restaurants) {
+    let lat = restaurant.location.coordinates[0];
+    let long = restaurant.location.coordinates[1];
+
+    restaurants.sort((a, b) => {
+      let restaurantALat = a.location.coordinates[0];
+      let restaurantALong = a.location.coordinates[1];
+      let restaurantBLat = b.location.coordinates[0];
+      let restaurantBLong = b.location.coordinates[1];
+
+      // (jos restaurant a Lat on isompi kuin user lat ja restaurantBlat)
+      // (jos )
+      if (restaurantALat > restaurantBLat) {
+        if (restaurantALat > userLat) {
+          if (restaurantALong > restaurantBLong) {
+            if (restaurantALong > userLong) {
+              return -1;
+            }
+          }
+        }
+      }
+    });
+  }
+}
