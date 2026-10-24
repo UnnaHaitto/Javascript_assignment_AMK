@@ -772,40 +772,50 @@ const restaurants = [
 
 // your code here
 
+function sortRestaurants(userLat, userLong) {
+  const x = userLong;
+  const y = userLat;
+
+  restaurants.sort((a, b) => {
+    let x2 = a.location.coordinates[0];
+    let y2 = a.location.coordinates[1];
+    let x3 = b.location.coordinates[0];
+    let y3 = b.location.coordinates[1];
+
+    let distanceA = Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2));
+    let distanceB = Math.sqrt(Math.pow(x3 - x, 2) + Math.pow(y3 - y, 2));
+
+    if (distanceA > distanceB) {
+      return 1;
+    } else if (distanceA < distanceB) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
+
 function success(pos) {
   const crd = pos.coords;
   const userLat = crd.latitude;
   const userLong = crd.longitude;
 
-  console.log(userLat, userLong);
-
   sortRestaurants(userLat, userLong);
-}
 
-console.log(navigator.geolocation.getCurrentPosition(success));
+  let html = '';
 
-function sortRestaurants(userLat, userLong) {
   for (let restaurant of restaurants) {
-    let lat = restaurant.location.coordinates[0];
-    let long = restaurant.location.coordinates[1];
-
-    restaurants.sort((a, b) => {
-      let restaurantALat = a.location.coordinates[0];
-      let restaurantALong = a.location.coordinates[1];
-      let restaurantBLat = b.location.coordinates[0];
-      let restaurantBLong = b.location.coordinates[1];
-
-      // (jos restaurant a Lat on isompi kuin user lat ja restaurantBlat)
-      // (jos )
-      if (restaurantALat > restaurantBLat) {
-        if (restaurantALat > userLat) {
-          if (restaurantALong > restaurantBLong) {
-            if (restaurantALong > userLong) {
-              return -1;
-            }
-          }
-        }
-      }
-    });
+    html += '<tr>';
+    html += '<th>' + restaurant.name + '</th>';
+    html += '<th>' + restaurant.address + '</th>';
+    html += '</tr>';
   }
+
+  document.querySelector('table tbody').innerHTML = html;
 }
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error);
