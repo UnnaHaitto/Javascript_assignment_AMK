@@ -1,9 +1,9 @@
 'use strict';
 
-let answer = prompt('Give your score of the test:');
+let answer = prompt('Give a positive number:');
 
 while (answer < 0) {
-  answer = prompt('Give your score of the test:');
+  answer = prompt('Give a positive number:');
 }
 const n = parseInt(answer);
 
