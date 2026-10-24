@@ -771,3 +771,7 @@ const restaurants = [
 ];
 
 // your code here
+
+for (let restaurant of restaurants) {
+  let lat = restaurant.location.coordinates;
+}
