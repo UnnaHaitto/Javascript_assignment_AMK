@@ -806,12 +806,12 @@ function success(pos) {
 
   for (let restaurant of restaurants) {
     html += '<tr>';
-    html += '<th>' + restaurant.name + '</th>';
-    html += '<th>' + restaurant.address + '</th>';
+    html += '<td>' + restaurant.name + '</td>';
+    html += '<td>' + restaurant.address + '</td>';
     html += '</tr>';
   }
 
-  document.querySelector('table tbody').innerHTML = html;
+  document.querySelector('table tbody').insertAdjacentHTML('beforeend', html);
 }
 
 function error(err) {
