@@ -772,6 +772,10 @@ const restaurants = [
 
 // your code here
 
+function removeHighlight(element) {
+  element.classList.remove('highlight');
+}
+
 restaurants.sort((a, b) => {
   let nameA = a.name;
   let nameB = b.name;
@@ -785,9 +789,10 @@ restaurants.sort((a, b) => {
   }
 });
 
+/*
 for (let restaurant of restaurants) {
   console.log(restaurant.name);
-}
+}*/
 
 let table = document.querySelector('table tbody');
 let html = '';
@@ -802,3 +807,40 @@ for (let restaurant of restaurants) {
 }
 
 table.insertAdjacentHTML('beforeend', html);
+
+let allTrElements = document.querySelectorAll('tr');
+
+allTrElements.forEach(function (tr) {
+  tr.addEventListener('click', function (evt) {
+    allTrElements.forEach(removeHighlight);
+
+    tr.classList.add('highlight');
+
+    let html = '';
+
+    let name = tr.firstElementChild.textContent;
+
+    for (let restaurant of restaurants) {
+      if (restaurant.name == name) {
+        html += '<h2>' + restaurant.name + '</h2>';
+        html += '<p> <b> Address: </b>' + restaurant.address + '</p>';
+        html += '<p> <b> Postal code: </b>' + restaurant.postalCode + '</p>';
+        html += '<p> <b> City: </b>' + restaurant.city + '</p>';
+        html += '<p> <b> Phone number: </b>' + restaurant.phone + '</p>';
+        html += '<p> <b> Company: </b>' + restaurant.company + '</p>';
+      }
+    }
+
+    let dialog = document.querySelector('dialog');
+
+    dialog.innerHTML = html;
+
+    dialog.showModal();
+
+    dialog.addEventListener('click', function (evt) {
+      if (evt.target == dialog) {
+        dialog.close();
+      }
+    });
+  });
+});
